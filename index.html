@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#081225">
+<meta name="description" content="MENYA — Discover something new every day. Learn, play, take challenges and connect with the world.">
+<title>MENYA — Discover More</title>
+
+<style>
+:root {
+  --bg: #071225;
+  --panel: #101e35;
+  --panel2: #142540;
+  --gold: #f2c15c;
+  --white: #f8fafc;
+  --muted: #a9b6ca;
+  --teal: #54dbc5;
+  --border: rgba(255,255,255,.10);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, select {
+  font: inherit;
+}
+
+button, a, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: min(1120px, 91%);
+  margin: auto;
+}
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7,18,37,.95);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  min-height: 78px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+#language {
+  max-width: 145px;
+  background: var(--panel);
+  color: white;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 21px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  color: #111827;
+  background: var(--gold);
+}
+
+.btn-outline {
+  color: white;
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+.btn-teal {
+  background: var(--teal);
+  color: #061b25;
+}
+
+button:focus-visible, a:focus-visible, select:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+/* HERO */
+.hero {
+  padding: 85px 0 75px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 85% 10%, rgba(84,219,197,.12), transparent 35%),
+    radial-gradient(ellipse at 5% 80%, rgba(242,193,92,.10), transparent 35%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 19px;
+}
+
+h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin-bottom: 23px;
+}
+
+h1 span {
+  color: var(--gold);
+}
+
+.hero-text {
+  max-width: 570px;
+  color: var(--muted);
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-visual {
+  min-height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(242,193,92,.2), rgba(84,219,197,.15));
+  filter: blur(5px);
+}
+
+.orbit {
+  position: relative;
+  width: 285px;
+  height: 285px;
+  border: 1px solid rgba(242,193,92,.4);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orbit::before, .orbit::after {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(84,219,197,.25);
+  border-radius: 50%;
+}
+
+.orbit::after {
+  inset: 45px;
+  border-color: rgba(242,193,92,.2);
+}
+
+.orbit-center {
+  font-size: 75px;
+  font-weight: 900;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(242,193,92,.2);
+}
+
+.float-card {
+  position: absolute;
+  background: #152641;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 13px 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
+
+.float-card strong {
+  display: block;
+  color: var(--gold);
+}
+
+.float-card small {
+  color: var(--muted);
+}
+
+.card-one {
+  top: 32px;
+  right: 0;
+}
+
+.card-two {
+  bottom: 35px;
+  left: 0;
+}
+
+/* GENERAL SECTIONS */
+section {
+  scroll-margin-top: 90px;
+}
+
+.section {
+  padding: 75px 0;
+}
+
+.section-heading {
+  max-width: 680px;
+  margin-bottom: 35px;
+}
+
+.section-heading h2 {
+  font-size: clamp(30px, 4vw, 43px);
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
+.section-label {
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.challenge-card {
+  background: linear-gradient(145deg, var(--panel2), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 26px;
+  transition: .25s;
+}
+
+.challenge-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(242,193,92,.5);
+}
+
+.card-icon {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  background: rgba(242,193,92,.1);
+  border-radius: 15px;
+  font-size: 26px;
+  margin-bottom: 23px;
+}
+
+.challenge-card h3 {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.challenge-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 23px;
+}
+
+.challenge-card .btn {
+  width: 100%;
+}
+
+/* DAILY CHALLENGE */
+.daily-box {
+  background: linear-gradient(120deg, #172b46, #10233a);
+  border: 1px solid rgba(84,219,197,.2);
+  border-radius: 24px;
+  padding: 35px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 25px;
+}
+
+.daily-box h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.daily-box p {
+  color: var(--muted);
+}
+
+.daily-result {
+  display: none;
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,.15);
+}
+
+.daily-result.show {
+  display: block;
+}
+
+.daily-result strong {
+  color: var(--teal);
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.about-symbol {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  background: radial-gradient(circle, rgba(242,193,92,.12), transparent 65%);
+  font-size: 100px;
+}
+
+.about-copy h2 {
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.about-copy p {
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin-top: 25px;
+}
+
+.feature {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px;
+  font-size: 14px;
+}
+
+/* CONTACT */
+.contact-section {
+  background: linear-gradient(180deg, transparent, rgba(20,37,64,.5));
+}
+
+.contact-panel {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  padding: 35px;
+  border-radius: 22px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.contact-item {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  overflow-wrap: anywhere;
+}
+
+.contact-item .icon {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.contact-item h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.contact-item p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.contact-item a {
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.footer-inner p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-brand {
+  font-weight: 800;
+}
+
+.footer-brand span {
+  color: var(--gold);
+}
+
+/* NOTICE */
+.notice {
+  margin-top: 20px;
+  padding: 14px 17px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 800px) {
+  .hero-grid, .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 60px 0;
+  }
+
+  .hero-visual {
+    min-height: 300px;
+  }
+
+  .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-symbol {
+    min-height: 200px;
+  }
+
+  .daily-box {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    padding: 15px 0;
+    align-items: flex-start;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .nav-right {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+  }
+
+  #language {
+    max-width: 100%;
+  }
+
+  h1 {
+    letter-spacing: -1px;
+  }
+
+  .contact-panel {
+    padding: 20px;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home" aria-label="MENYA home">MEN<span>YA</span></a>
+
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" data-i18n="navHome">Home</a>
+        <a href="#challenges" data-i18n="navChallenges">Challenges</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+
+      <select id="language" aria-label="Choose website language">
+        <option value="en">🌐 English</option>
+        <option value="sw">🇹🇿 Kiswahili</option>
+        <option value="rn">🇧🇮 Ikirundi</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="es">🇪🇸 Español</option>
+        <option value="pt">🇵🇹 Português</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="ar">🇸🇦 العربية</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow">A WORLD OF POSSIBILITIES</p>
+
+      <h1 data-i18n="headline">
+        Discover more.<br><span>Become more.</span>
+      </h1>
+
+      <p class="hero-text" data-i18n="intro">
+        Welcome to MENYA, a place to explore ideas, challenge yourself,
+        learn something new and grow with a world of curious minds.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#challenges" class="btn btn-gold" data-i18n="explore">Explore MENYA →</a>
+        <a href="#about" class="btn btn-outline" data-i18n="learn">Discover our vision</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="MENYA visual">
+      <div class="glow"></div>
+      <div class="orbit">
+        <div class="orbit-center">M</div>
+      </div>
+
+      <div class="float-card card-one">
+        <strong>🌍 One world</strong>
+        <small data-i18n="floatOne">Countless possibilities</small>
+      </div>
+
+      <div class="float-card card-two">
+        <strong>✨ Every day</strong>
+        <small data-i18n="floatTwo">A chance to grow</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="challenges">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label" data-i18n="sectionEyebrow">EXPLORE • LEARN • GROW</p>
+      <h2 data-i18n="sectionTitle">Make every day count.</h2>
+      <p data-i18n="sectionIntro">
+        Start small. Discover a new idea, test your knowledge or take
+        a moment to challenge yourself.
+      </p>
+    </div>
+
+    <div class="challenge-grid">
+
+      <article class="challenge-card">
+        <div class="card-icon">🧠</div>
+        <h3 data-i18n="card1Title">Mind Challenge</h3>
+        <p data-i18n="card1Text">
+          Give your brain a workout with a simple question that invites
+          you to think differently.
+        </p>
+        <button class="btn btn-outline" onclick="startChallenge(0)" data-i18n="cardButton">
+          Start challenge →
+        </button>
+      </article>
+
+      <article class="challenge-card">
+        <div class="card-icon">🌎</div>
+        <h3 data-i18n="card2Title">World Discovery</h3>
+        <p data-i18n="card2Text">
+          Discover fascinating facts about countries, cultures and
+          the people who make our world special.
+        </p>
+        <button class="btn btn-outline" onclick="startChallenge(1)" data-i18n="cardButton">
+          Start challenge →
+        </button>
+      </article>
+
+      <article class="challenge-card">
+        <div class="card-icon">🚀</div>
+        <h3 data-i18n="card3Title">Personal Growth</h3>
+        <p data-i18n="card3Text">
+          Take one small step towards building a positive habit
+          and becoming a better version of yourself.
+        </p>
+        <button class="btn btn-outline" onclick="startChallenge(2)" data-i18n="cardButton">
+          Start challenge →
+        </button>
+      </article>
+
+    </div>
+
+    <div class="daily-box" style="margin-top:25px">
+      <div>
+        <p class="section-label" data-i18n="dailyLabel">YOUR MOMENT TODAY</p>
+        <h3 data-i18n="dailyTitle">Ready for today's mini challenge?</h3>
+        <p data-i18n="dailyText">Take two minutes for a little discovery.</p>
+
+        <div class="daily-result" id="challengeResult" aria-live="polite">
+          <strong id="resultTitle"></strong>
+          <p id="resultText" style="margin-top:8px"></p>
+        </div>
+      </div>
+
+      <button class="btn btn-teal" onclick="startChallenge(-1)" data-i18n="dailyButton">
+        Reveal today's challenge ✨
+      </button>
+    </div>
+
+    <div class="notice" data-i18n="notice">
+      MENYA is growing step by step. More experiences and community features
+      will be introduced as the platform develops.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="about-symbol" aria-hidden="true">🌐</div>
+
+    <div class="about-copy">
+      <p class="section-label" data-i18n="aboutEyebrow">OUR VISION</p>
+      <h2 data-i18n="aboutTitle">A little curiosity can open a big world.</h2>
+
+      <p data-i18n="aboutText">
+        MENYA is being built around a simple idea: everyone should have
+        a place to discover, learn and challenge themselves, wherever
+        they come from.
+      </p>
+
+      <p data-i18n="aboutText2">
+        Our vision is to grow into a welcoming global platform with
+        interactive activities, personal profiles and a community
+        that learns and grows together.
+      </p>
+
+      <div class="feature-list">
+        <div class="feature" data-i18n="feature1">🌍 Made for a global audience</div>
+        <div class="feature" data-i18n="feature2">💡 Learn something new</div>
+        <div class="feature" data-i18n="feature3">🎯 Small daily challenges</div>
+        <div class="feature" data-i18n="feature4">🤝 Grow together</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-panel">
+      <div class="section-heading" style="margin-bottom:0">
+        <p class="section-label" data-i18n="contactEyebrow">GET IN TOUCH</p>
+        <h2 data-i18n="contactTitle">Contact MENYA.</h2>
+        <p data-i18n="contactText">
+          Have a question, an idea or want to work with us?
+          Reach out using one of the contact options below.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="icon">📩</div>
+          <h3 data-i18n="emailTitle">Email us</h3>
+          <p data-i18n="emailText">For questions and enquiries.</p>
+          <a href="mailto:officialworldgallery@gmail.com">
+            officialworldgallery@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon">🟢</div>
+          <h3 data-i18n="wa1Title">WhatsApp — Burundi</h3>
+          <p data-i18n="waText">Send us a WhatsApp message.</p>
+          <a href="https://wa.me/25764699734" target="_blank" rel="noopener noreferrer">
+            +257 646 99734 ↗
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon">🟢</div>
+          <h3 data-i18n="wa2Title">WhatsApp — Tanzania</h3>
+          <p data-i18n="waText">Send us a WhatsApp message.</p>
+          <a href="https://wa.me/255766930501" target="_blank" rel="noopener noreferrer">
+            +255 766 930501 ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="#home" class="logo">MEN<span>YA</span></a>
+
+    <p>
+      © <span id="year"></span> MENYA.
+      <span data-i18n="footerText">Discover more. Become more.</span>
+    </p>
+
+    <p class="footer-brand">
+      <span data-i18n="developed">Developed by</span>
+      <span>It Abednego</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+const translations = {
+en: {
+navHome:"Home", navChallenges:"Challenges", navAbout:"About", navContact:"Contact",
+eyebrow:"A WORLD OF POSSIBILITIES",
+headline:'Discover more.<br><span>Become more.</span>',
+intro:"Welcome to MENYA, a place to explore ideas, challenge yourself, learn something new and grow with a world of curious minds.",
+explore:"Explore MENYA →", learn:"Discover our vision",
+floatOne:"Countless possibilities", floatTwo:"A chance to grow",
+sectionEyebrow:"EXPLORE • LEARN • GROW", sectionTitle:"Make every day count.",
+sectionIntro:"Start small. Discover a new idea, test your knowledge or take a moment to challenge yourself.",
+card1Title:"Mind Challenge", card1Text:"Give your brain a workout with a simple question that invites you to think differently.",
+card2Title:"World Discovery", card2Text:"Discover fascinating facts about countries, cultures and the people who make our world special.",
+card3Title:"Personal Growth", card3Text:"Take one small step towards building a positive habit and becoming a better version of yourself.",
+cardButton:"Start challenge →", dailyLabel:"YOUR MOMENT TODAY", dailyTitle:"Ready for today's mini challenge?",
+dailyText:"Take two minutes for a little discovery.", dailyButton:"Reveal today's challenge ✨",
+notice:"MENYA is growing step by step. More experiences and community features will be introduced as the platform develops.",
+aboutEyebrow:"OUR VISION", aboutTitle:"A little curiosity can open a big world.",
+aboutText:"MENYA is being built around a simple idea: everyone should have a place to discover, learn and challenge themselves, wherever they come from.",
+aboutText2:"Our vision is to grow into a welcoming global platform with interactive activities, personal profiles and a community that learns and grows together.",
+feature1:"🌍 Made for a global audience", feature2:"💡 Learn something new", feature3:"🎯 Small daily challenges", feature4:"🤝 Grow together",
+contactEyebrow:"GET IN TOUCH", contactTitle:"Contact MENYA.", contactText:"Have a question, an idea or want to work with us? Reach out using one of the contact options below.",
+emailTitle:"Email us", emailText:"For questions and enquiries.", wa1Title:"WhatsApp — Burundi", wa2Title:"WhatsApp — Tanzania", waText:"Send us a WhatsApp message.",
+developed:"Developed by", footerText:"Discover more. Become more.",
+resultTitle:"Your challenge", messages:[
+["Think differently 🧠","What is one problem in your community that you would love to help solve? Think of one small action you could take."],
+["Explore the world 🌎","Name three things you would like to learn about another country. Choose one and look it up today."],
+["Grow a little today 🚀"
